@@ -1,0 +1,36 @@
+easy_admin:
+  design:
+    assets:
+      css:
+        - '/assets/bs-tags/bootstrap-tagsinput.css'
+      js:
+        - '/assets/bs-tags/bootstrap-tagsinput.js'
+  site_name: 'Jamanim <b>Media</b>'
+  user:
+    display_name: true
+    display_avatar: true
+    name_property_path: 'fullName'
+  entities:
+    User:
+      class: App\Entity\Utilisateur
+      edit:
+        fields:
+          - prenom
+          - nom
+          - mail
+          - username
+
+      list:
+        item_permission: 'ROLE_ADMIN'
+    Comment:
+      class: App\Entity\Comment
+      list:
+        item_permission: 'ROLE_ADMIN'
+    Anime:
+      class: App\Entity\Anime
+      list:
+        item_permission: 'ROLE_ADMIN'
+    Episode:
+      class: App\Entity\Episode
+      list:
+        item_permission: 'ROLE_ADMIN'

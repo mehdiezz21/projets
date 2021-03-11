@@ -1,0 +1,1 @@
+Ce projet provient d'un partenariat avec ManoMano. Le projet était à faire sous 48h pour une présentation visuel et technique de l'idée.

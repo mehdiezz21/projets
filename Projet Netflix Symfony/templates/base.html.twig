@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="/">Jamanim</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('anime')}}">Animé</a>
+                </li>
+                {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('compte')}}">Compte</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('about')}}">About</a>
+                </li>
+                </ul>
+                {% if not app.user %}
+                    <a href="{{ path('connexion')}}"><input type="button" class="btn btn-primary my-2 my-sm-0" value="Connexion"> </a>
+                    <a href="{{ path('inscription')}}"><input type="button" class="btn btn-primary my-2 my-sm-0" value="Inscription"> </a>
+
+                {% else %}
+                    <a href="{{ path('deconnexion')}}"><input type="button" class="btn btn-primary my-2 my-sm-0" value="Déconnexion"> </a>
+                {% endif %}
+                <a href="{{ path('search')}}"><input type="button" class="btn btn-secondary my-2 my-sm-0" value="Recherche"> </a>
+                </form>
+            </div>
+        </nav>
+        <div class="container">
+        {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

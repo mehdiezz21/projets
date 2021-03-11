@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% form_theme formComment 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} Présentation {% endblock %}
+
+
+{% block body %}
+{% for anime in animes %}
+        <anime>
+        <h1>{{anime.name}}</h1>
+        <div class="metadata"><p>Studio de création : {{anime.studio}}</p></div>
+        <div class="content">
+        <p>{{anime.resume}}</p>
+        <p> Avis de l'équipe : {{anime.avis}} </p>
+        <p> Note : {{anime.note}}</p>
+        {% for episode in episode %}
+        <episode>
+        <a class="btn btn-primary" href="{{path('episode', {'anime': anime.name , 'numero': episode.numero})}}" >Episode {{episode.numero}}</a>
+        </episode>
+        {% endfor %}
+        </br>
+
+        <h3>{{comment | length}} commentaire(s):</h3>
+
+        {% for comment in comment %}
+                <comment>
+                <div class="content">
+                </br>
+                <p>de :{{comment.auteur}} le : {{comment.date | date('d/m/Y')}} à {{comment.date | date('H:i')}}</p>
+                <p>{{comment.content}}</p>
+                </div>
+                </comment>
+        {% endfor %}
+
+
+        {{ form_start(formComment)}}
+        {{ form_row(formComment.content , {'attr' : {'placeholder' : "Contenu du commentaire"}})}}
+        <button type="submit" class="btn btn-primary">Poster</button>
+        {{ form_end(formComment)}}
+
+        </anime>
+{% endfor %}
+{% endblock %}

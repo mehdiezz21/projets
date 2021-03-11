@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title%} Compte{% endblock %}
+
+{% block body %}
+<h1>Compte</1>
+<anime>
+{% for user in users %}
+        <user>
+        <h2>Nom d'utilisateur:{{user.username}}</h2>
+        <div class="content">
+        <p>nom: {{ user.nom }}</p>
+        <p>prenom: {{ user.prenom }}</p>
+        <p>email: {{ user.mail }}</p>
+        </div>
+        </user>
+{% endfor %}
+{% endblock %}

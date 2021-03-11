@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title%} Acceuil{% endblock %}
+
+{% block body %}
+<h1>Welcome</h1>
+    {% for anime in animes %}
+        <anime>
+        {% if app.user %}
+        <h2><a class="nav-link"  href="{{path('manga', {'name': anime.name})}}">{{anime.name}}</a></h2>
+        {% else %}
+        <h2>{{anime.name}}</h2>
+        {% endif %}
+        <img src="{{ anime.image }}" alt="">
+        {% if app.user %}
+        <a class="btn btn-primary" href="{{path('manga', {'name': anime.name})}}" >Voir</a>
+        {% endif %}
+
+        </anime>
+    {% endfor %}
+
+{% endblock %}

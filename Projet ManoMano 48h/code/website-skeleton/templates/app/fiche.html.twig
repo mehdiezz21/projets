@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppController!{% endblock %}
+
+{% block body %}
+
+{% for meuble in meuble %}
+    <meuble>
+    <h1>{{ meuble.name }}</h1>
+
+    <img src="{{ asset('images/' ~ meuble.Image) }}" style = "max-width: 50%">
+
+    <h2>Nombre d'étape: </h2> <p>{{ meuble.etape }}<p>
+    
+    <h2>Outils nécessaires: </h2>
+    {% for outils in meuble.outils %}
+    <outils>
+    <p> {{ outils }}</p>
+
+    </outils>
+    {% endfor %}
+
+    <a class="btn btn-primary" href="{{path('manuel', {'name': meuble.name, 'page': 1})}}" >Voir</a>
+    
+    </meuble>
+{% endfor %}
+
+{% endblock %}
